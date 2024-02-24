@@ -10,6 +10,14 @@ from redis_cache_set import cache
 import connect
 
 
+def error_handler(func):
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except KeyboardInterrupt:
+            exit_program()
+    return wrapper()
+
 
 def authors_view_adapter(authors: list):
     return [f"{author.name} - born: {author.born_date.strftime('%B %d, %Y')}, {author.born_location}\n{author.description}" for author in authors]
@@ -78,6 +86,7 @@ def execute_command(command: str, arguments: list):
     return db_query(cmd, arguments)
 
 
+@error_handler
 def main():
     while True:
         command, arguments = user_command_input()
