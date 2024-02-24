@@ -1,8 +1,8 @@
 import json
-from datetime import datetime, date
+from datetime import datetime
 
-from models import Author, Quote, Tag
-import connect
+from part_I.models import Author, Quote, Tag
+from part_I.connect import connect
 
 
 def load_json_data(path):

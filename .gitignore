@@ -152,4 +152,4 @@ cython_debug/
 .idea/
 
 # Files with credentials (API keys, passwords, etc) used during development
-config_dev.ini
+part_I/config_dev.ini

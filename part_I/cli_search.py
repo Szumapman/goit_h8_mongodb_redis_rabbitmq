@@ -5,9 +5,9 @@ from prompt_toolkit import prompt
 from prompt_toolkit.completion import FuzzyWordCompleter
 from pymongo.errors import OperationFailure
 
-from models import Author, Quote
-from redis_cache_set import cache
-import connect
+from part_I.models import Author, Quote
+from part_I.redis_cache_set import cache
+from part_I.connect import connect
 
 
 def error_handler(func):
