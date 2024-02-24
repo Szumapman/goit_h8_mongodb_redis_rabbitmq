@@ -6,7 +6,7 @@ from pymongo.errors import ConfigurationError
 import configparser
 
 config = configparser.ConfigParser()
-config_path = Path(__file__).parent.parent / "config_dev.ini"
+config_path = Path(__file__).parent.parent / "config.ini"
 config.read(config_path)
 
 mongo_user = config.get("DB", "user")
