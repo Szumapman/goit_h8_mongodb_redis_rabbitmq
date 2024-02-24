@@ -1,12 +1,11 @@
 import difflib
 import sys
-from datetime import datetime
 
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import FuzzyWordCompleter
 from pymongo.errors import OperationFailure
 
-from models import Author, Quote, Tag
+from models import Author, Quote
 from redis_cache_set import cache
 import connect
 
