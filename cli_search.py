@@ -6,7 +6,9 @@ from prompt_toolkit import prompt
 from prompt_toolkit.completion import FuzzyWordCompleter
 
 from models import Author, Quote, Tag
+from redis_cache_set import cache
 import connect
+
 
 
 def authors_view_adapter(authors: list):
@@ -17,6 +19,7 @@ def quotes_view_adapter(quotes: list):
     return [f"{quote.author.name}: {quote.quote}\ntags: {', '.join([tag.name for tag in quote.tags])}" for quote in quotes]
 
 
+@cache
 def db_query(type_objects, arguments: list):
     answers = []
     if type_objects == Author:
@@ -26,7 +29,7 @@ def db_query(type_objects, arguments: list):
             return authors_view_adapter(answers)
     elif type_objects == Quote:
         for arg in arguments:
-            answers += type_objects.objects(tags__name__icontains=arg)
+            answers += type_objects.objects(tags__name__istartswith=arg)
             if answers:
                 return quotes_view_adapter(answers)
     return []
