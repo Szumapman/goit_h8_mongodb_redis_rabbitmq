@@ -4,6 +4,7 @@ from datetime import datetime
 
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import FuzzyWordCompleter
+from pymongo.errors import OperationFailure
 
 from models import Author, Quote, Tag
 from redis_cache_set import cache
@@ -14,6 +15,10 @@ def error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             return func(*args, **kwargs)
+        except OperationFailure as e:
+            print("Problem with database connection, check your connection and credentials settings.")
+            print(f"Error: {e}")
+            sys.exit(1)
         except KeyboardInterrupt:
             exit_program()
     return wrapper()
