@@ -50,6 +50,8 @@ def publish():
                     body=json.dumps(message).encode(),
                     properties=pika.BasicProperties(delivery_mode=pika.spec.PERSISTENT_DELIVERY_MODE),
                 )
+                print(f" [x] Send message to contact id: {contact.id} via ",
+                      contact.email if contact.preferred_contact_channel == "email" else contact.phone)
             except pika.exceptions.UnroutableError:
                 print(f" [!] Error while sending message to contact id: {contact.id} via ",
                       contact.email if contact.preferred_contact_channel == "email" else contact.phone)
