@@ -6,7 +6,7 @@ from part_I.connect import connect
 
 
 def load_json_data(path):
-    with open(path, "r") as f:
+    with open(path, "r", encoding='utf-8') as f:
         data = json.load(f)
         return data
 
