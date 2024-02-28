@@ -2,7 +2,7 @@
 # Zadanie domowe #8
 
 > [!WARNING]
-> Przed uzyciem należy uzupełnić plik congig.ini danymi pozwalającymi na pracę z bażą `MongoDB`
+> Przed uzyciem należy uzupełnić plik config.ini danymi pozwalającymi na pracę z bazą `MongoDB`
 >
 > USER = <wpisz nazwę użytkownika>
 > 
